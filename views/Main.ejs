@@ -1,0 +1,88 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%path1.forEach(function(recallInfo){%>
+    <title>
+      <%=recallInfo.title%>
+        <%= recallInfo.desc %>
+    </title>
+    <%})%>
+</head>
+
+<body class="allelements">
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      /* height: 20px; */
+      font-size: 20px;
+      /* width: 50%; */
+      table-layout: fixed;
+    }
+
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+  <div>
+    <form action='/set' method="post">
+      <!-- Recall Title : <input type="text" name="titleRecall" placeholder="title"><br /><br /> -->
+      <!-- Recall Desc : <input type="text" name="descTitle" placeholder="description"><br /><br /> -->
+      <%path1.forEach(function(recallInfo){%>
+        Recall Title : <input type="text" name="titleRecall" placeholder="title"
+          value='<%=recallInfo.title%>'><br /><br />
+        Recall Desc : <input type="text" name="descTitle" placeholder="description"
+          value='<%= recallInfo.desc %>'><br /><br />
+        <%})%>
+          <input type='submit' /></br></br>
+    </form>
+    <table class="center">
+      <tr>
+        <th>ID</th>
+        <th>Number</th>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>URL</th>
+        <th>ConsumerContact</th>
+        <th>LastPublishDate</th>
+      </tr>
+      <%path.forEach(function(details){%>
+        <tr style="text-align:center;">
+          <td>
+            <%= details.RecallID %>
+          </td>
+          <td>
+            <%= details.RecallNumber %>
+          </td>
+          <td>
+            <%= details.RecallDate %>
+          </td>
+          <td>
+            <%= details.Title %>
+          </td>
+          <td>
+            <%= details.Description %>
+          </td>
+          <td>
+            <a href="<%= details.URL %>" target="_blank">
+              <%= details.URL %>
+            </a>
+          </td>
+          <td>
+            <%= details.ConsumerContact %>
+          </td>
+          <td>
+            <%= details.LastPublishDate %>
+          </td>
+        </tr>
+        <%})%>
+    </table>
+  </div>
+</body>
+
+</html>
