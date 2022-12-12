@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
   });
 });
 
+
 app.post('/set' , (req,res)=>{
   if(req.body.titleRecall){
     recallTitle = req.body.titleRecall
@@ -61,19 +62,35 @@ app.post('/set' , (req,res)=>{
     desc : recallDescription
   }]
 });
+// res.json(data)
 })
 
 app.post('/states', (req, res) => {
-  var sql = `select * from csv${req.body.year_filing_for} where state='${req.body.states_name}' AND  establishment_name LIKE '%${req.body.establishment_name}' OR establishment_name LIKE '%${req.body.establishment_name}%' OR establishment_name LIKE '${req.body.establishment_name}%'`;
-  // var sql = `select * from csv${req.body.year_filing_for} where state='${req.body.states_name}'`;
+  let sql = `select * from csv2016`
+  if(req.body.year_filing_for && req.body.states_name === undefined && req.body.establishment_name === undefined){
+    sql = `select * from csv${req.body.year_filing_for}`
+  } else if(req.body.states_name && req.body.establishment_name === undefined && req.body.year_filing_for === undefined){
+    sql = `select * from csv2016 where state='${req.body.states_name}'`
+  }else if(req.body.establishment_name && req.body.year_filing_for === undefined && req.body.states_name === undefined ){
+    sql = `select * from csv2016 where establishment_name LIKE '%${req.body.establishment_name}' OR establishment_name LIKE '%${req.body.establishment_name}%' OR establishment_name LIKE '${req.body.establishment_name}%'`
+  }else if(req.body.year_filing_for && req.body.states_name &&  req.body.establishment_name === undefined ){
+    sql = `select * from csv${req.body.year_filing_for} where state='${req.body.states_name}'`
+  } else if(req.body.year_filing_for && req.body.establishment_name  && req.body.states_name === undefined){
+    sql = `select * from csv${req.body.year_filing_for} where establishment_name LIKE '%${req.body.establishment_name}' OR establishment_name LIKE '%${req.body.establishment_name}%' OR establishment_name LIKE '${req.body.establishment_name}%'`
+  } else if(req.body.states_name && req.body.establishment_name && req.body.year_filing_for === undefined){
+    sql = `select * from csv2016 where state='${req.body.states_name}' AND  establishment_name LIKE '%${req.body.establishment_name}' OR establishment_name LIKE '%${req.body.establishment_name}%' OR establishment_name LIKE '${req.body.establishment_name}%'`;
+  }else if(req.body.states_name && req.body.establishment_name && req.body.year_filing_for){
+    sql = `select * from csv${req.body.year_filing_for} where state='${req.body.states_name}' AND  establishment_name LIKE '%${req.body.establishment_name}' OR establishment_name LIKE '%${req.body.establishment_name}%' OR establishment_name LIKE '${req.body.establishment_name}%'`;
+  }
   console.log('Query',sql)
   pool.query(sql, (err, results) => {
       if (err) {
           throw err;
       } else {
-              res.render("Index", {
-                  path: results.rows,
-              });
+        res.json(results.rows)
+              // res.render("Index", {
+                  // path: results.rows,
+              // });
       }
   })
 })
