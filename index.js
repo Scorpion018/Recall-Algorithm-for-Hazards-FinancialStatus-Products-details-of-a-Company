@@ -23,8 +23,8 @@ pool.connect((err) => {
 });
 
 let data = ''
-let recallTitle = 'child'
-let recallDescription = 'toys'
+let recallTitle = ''
+let recallDescription = ''
 let arrayName =[
   {
     title : recallTitle,
@@ -40,6 +40,7 @@ app.get("/", (req, res) => {
 
 
 app.post('/set' , (req,res)=>{
+  let url = `https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=${recallTitle}`
   if(req.body.titleRecall){
     recallTitle = req.body.titleRecall
     arrayName.title = req.body.titleRecall
@@ -47,10 +48,11 @@ app.post('/set' , (req,res)=>{
   if(req.body.descTitle){
     recallDescription = req.body.descTitle
     arrayName.desc = req.body.descTitle
+    url = `https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=${recallTitle}&RecallDescription=${recallDescription}`
   }
  console.log(recallTitle)
  console.log(recallDescription)
- fetch(`https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=${recallTitle}&RecallDescription=${recallDescription}`)
+ fetch(url)
   .then(res => res.json())
   .then(json => {
     data = json
