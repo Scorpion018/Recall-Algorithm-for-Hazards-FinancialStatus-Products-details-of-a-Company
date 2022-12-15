@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account</title>
+</head>
+
+<body class="allelements">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: 20px;
+            table-layout: fixed;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .divgreen {
+            width: 20px;
+            border: 1px solid black;
+            height: 20px;
+            border-radius: 50px;
+            background-color: green;
+        }
+
+        .divyellow {
+            width: 20px;
+            border: 1px solid black;
+            height: 20px;
+            border-radius: 50px;
+            background-color: yellow;
+        }
+
+        .divorange {
+            width: 20px;
+            border: 1px solid black;
+            height: 20px;
+            border-radius: 50px;
+            background-color: orange;
+        }
+
+        .divred {
+            width: 20px;
+            border: 1px solid black;
+            height: 20px;
+            border-radius: 50px;
+            background-color: red;
+        }
+
+        .divNoColor {
+            width: 20px;
+            border: 1px solid black;
+            height: 20px;
+            border-radius: 50px;
+            background-color: white;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+    </style>
+    <script>
+        function newTime(timeStamp) {
+            var timeFormat = new Date(timeStamp)
+            return timeFormat.getdate();
+        }
+    </script>
+    <div style='display:flex;'>
+        <table class="center">
+            <tr>
+                <th>ID</th>
+                <th>Hazard Type</th>
+                <th>Magnitude</th>
+                <th>Magnitude Type</th>
+                <th>Place</th>
+                <th>Time of Incident</th>
+                <th>URL</th>
+                <!-- <th>Detailed URL</th> -->
+                <th>Alert Level</th>
+                <th>Status</th>
+                <th>Sign of Tsunami</th>
+                <th>Co-ordinates</th>
+            </tr>
+            <%path.forEach(function(details){%>
+                <tr style="text-align:center;">
+                    <td>
+                        <%= details.id %>
+                    </td>
+                    <td>
+                        <%= details.properties.type %>
+                    </td>
+                    <td>
+                        <%= details.properties.mag %>
+                    </td>
+                    <td>
+                        <%= details.properties.magType %>
+                    </td>
+                    <td>
+                        <%= details.properties.place %>
+                    </td>
+                    <td>
+                        <%= helper.newDate(details.properties.time)%>
+                    </td>
+                    <td>
+                        <a href="<%= details.properties.url %>" target="_blank">
+                            <%= details.properties.url %>
+                        </a>
+                    </td>
+                    <td>
+                        <%if(details.properties.alert){ %>
+                            <div class="tooltip">
+                                <div class="div<%= details.properties.alert %>">
+                                </div>
+                                <span class="tooltiptext">Pager Alert <%= details.properties.alert %></span>
+                            </div>
+                            <%} else {%>
+                                <div class="tooltip">
+                                    <div class="divNoColor"></div>
+                                    <span class="tooltiptext">Pager Alert undefined</span>
+                                </div>
+                                <%}%>
+                    </td>
+                    <td>
+                        <%= details.properties.status %>
+                    </td>
+                    <td>
+                        <%= details.properties.tsunami %>
+                    </td>
+                    <td>
+                        <%= details.geometry.coordinates %>
+                    </td>
+                </tr>
+                <%})%>
+        </table>
+    </div>
+</body>
+
+</html>

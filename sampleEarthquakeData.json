@@ -1,0 +1,40 @@
+{
+    "type": "Feature",
+    "properties": {
+        "mag": 6.5,
+        "place": "32 km W of Sola, Vanuatu",
+        "time": 1388592209000,
+        "updated": 1651596180609,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usc000lvb5",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=usc000lvb5&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": 4.262,
+        "alert": "green",
+        "status": "reviewed",
+        "tsunami": 1,
+        "sig": 650,
+        "net": "us",
+        "code": "c000lvb5",
+        "ids": ",pt14001000,at00myqcls,usc000lvb5,iscgem604060577,",
+        "sources": ",pt,at,us,iscgem,",
+        "types": ",cap,impact-link,losspager,moment-tensor,origin,phase-data,shakemap,",
+        "nst": null,
+        "dmin": 3.997,
+        "rms": 0.76,
+        "gap": 14,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 6.5 - 32 km W of Sola, Vanuatu"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            167.249,
+            -13.8633,
+            187
+        ]
+    },
+    "id": "usc000lvb5"
+}

@@ -2,171 +2,233 @@
 <html>
 
 <head>
-    <meta name="viewport" initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="./main.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Montserrat;
-            /* background-color: #ffdd7f; */
-            color: black;
-        }
+  <meta name="viewport" initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="./main.css">
+  <script type="text/javascript">
+    function showDiv(select) {
+      if (select.value == 1) {
+        document.getElementById('floodDiv').style.display = "block";
+        document.getElementById('earthquakeDiv').style.display = "none";
+        document.getElementById('watersourceDiv').style.display = "none";
+      } else if (select.value == 0) {
+        document.getElementById('watersourceDiv').style.display = "block";
+        document.getElementById('earthquakeDiv').style.display = "none";
+        document.getElementById('floodDiv').style.display = "none";
 
-        .box {
-            top: 40%;
-            left: 30%;
-            position: absolute;
-            transform: translate(-50%, -50%);
-            width: 370px;
-            height: 440px;
-            background: #222;
-            opacity: 0.4;
-            border: solid black;
-            background-color: transparent;
-        }
+      } else {
+        document.getElementById('earthquakeDiv').style.display = "block";
+        document.getElementById('watersourceDiv').style.display = "none";
+        document.getElementById('floodDiv').style.display = "none";
+      }
+    } 
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Montserrat;
+      /* background-color: #ffdd7f; */
+      color: black;
+    }
 
-        .box2 {
-            top: 40%;
-            right: 20%;
-            position: absolute;
-            transform: translate(-50%, -50%);
-            width: 370px;
-            height: 440px;
-            background: #222;
-            opacity: 0.4;
-            border: solid black;
-            background-color: transparent;
-        }
+    .box {
+      top: 40%;
+      left: 20%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 370px;
+      height: 480px;
+      background: #222;
+      opacity: 0.4;
+      border: solid black;
+      background-color: transparent;
+    }
 
-        .input-fields,
-        .select-items,
-        .inputOsha {
-            top: 40%;
-            right: -6%;
-            transform: translate(-50%, -50%);
-            position: absolute;
-        }
+    .box2 {
+      top: 40%;
+      right: 5%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 370px;
+      height: 480px;
+      background: #222;
+      opacity: 0.4;
+      border: solid black;
+      background-color: transparent;
+    }
 
-        .input-fields {
-            top: 40%;
-            left: 30%;
-            transform: translate(-50%, -50%);
-            position: absolute;
-        }
+    .box3 {
+      top: 40%;
+      left: 48%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 370px;
+      height: 480px;
+      background: #222;
+      opacity: 0.4;
+      border: solid black;
+      background-color: transparent;
+    }
 
-        .input-fields input[type="text"] {
-            border: 3px solid #2196f3;
-            border-radius: 40px;
-            display: block;
-            padding: 8px;
-            text-align: left;
-            color: black;
-            transition: 440ms;
-            background: none;
-            outline: none;
-            margin: 30px auto;
-            width: 200px;
-        }
+    .input-fields,
+    .select-items,
+    .inputOsha {
+      top: 40%;
+      right: -18%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
 
-        .input-fields input[type="submit"] {
-            cursor: pointer;
-            background: none;
-            border-radius: 40px;
-            border: 3px solid #2196f3;
-            outline: none;
-            padding: 6px;
-            width: 100px;
-            margin: 10px auto;
-            color: black;
-            transition: 440ms;
-            text-transform: uppercase;
-            font-weight: bold;
-            display: block;
-        }
+    .input-fields,
+    .select-items,
+    .inputEdata {
+      top: 40%;
+      left: 79%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
 
-        .input-fields input[type="submit"]:hover {
-            background: #2196f3;
-            width: 120px;
-        }
+    .input-fields {
+      top: 40%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
 
-        .input-fields input[type="text"]:focus {
-            border: 3px solid #e74c3c;
-            width: 190px;
-        }
+    .input-fields input[type="text"] {
+      border: 3px solid #2196f3;
+      border-radius: 40px;
+      display: block;
+      padding: 8px;
+      text-align: left;
+      color: black;
+      transition: 440ms;
+      background: none;
+      outline: none;
+      margin: 30px auto;
+      width: 200px;
+    }
 
-        .titleRecall {
-            margin-left: -8%;
-        }
+    .input-fields input[type="date"] {
+      border: 3px solid #2196f3;
+      border-radius: 40px;
+      display: block;
+      padding: 8px;
+      text-align: left;
+      color: black;
+      transition: 440ms;
+      background: none;
+      outline: none;
+      margin: 30px auto;
+      width: 200px;
+    }
 
-        .titelDesc {
-            margin-left: -5%;
-        }
+    .input-fields input[type="submit"] {
+      cursor: pointer;
+      background: none;
+      border-radius: 40px;
+      border: 3px solid #2196f3;
+      outline: none;
+      padding: 6px;
+      width: 100px;
+      margin: 10px auto;
+      color: black;
+      transition: 440ms;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: block;
+    }
 
-        .titleEstablishment {
-            margin-left: -50%;
-        }
+    .input-fields input[type="submit"]:hover {
+      background: #2196f3;
+      width: 120px;
+    }
 
-        .stateYear {
-            margin-left: -40%;
-        }
+    .input-fields input[type="text"]:focus {
+      border: 3px solid #e74c3c;
+      width: 190px;
+    }
 
-        .profile-text h4 {
-            color: black;
-            top: 10%;
-            left: 25%;
-            position: absolute;
-            text-transform: uppercase;
-            font-size: 30px;
-        }
+    .titleRecall {
+      margin-left: -8%;
+    }
 
-        select {
-            appearance: none;
-            background-color: transparent;
-            border: none;
-            margin: 0;
-            /* width: 100%; */
-            font-family: inherit;
-            font-size: inherit;
-            cursor: inherit;
-            /* z-index: 1; */
-            transition: 440ms;
-            outline: none;
-        }
+    .titelDesc {
+      margin-left: -5%;
+    }
 
-        .select {
-            grid-template-areas: "select";
-            align-items: center;
-            position: relative;
-            min-width: 15ch;
-            /* max-width: 30ch; */
-            border: 3px solid #2196f3;
-            border-radius: 50px;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: 440ms;
-            line-height: 0.458;
-            background-color: #fff;
-        }
+    .titleEstablishment {
+      margin-left: -50%;
+    }
 
-        option {
-            white-space: normal;
-            outline-color: var(--select-focus);
-        }
+    .stateYear {
+      margin-left: -40%;
+    }
 
-        .oshaHeading {
-            color: black;
-            top: 10%;
-            right: 29%;
-            position: absolute;
-            text-transform: uppercase;
-            font-size: 30px;
-        }
-    </style>
+    .cpscRecall {
+      color: black;
+      top: 8%;
+      left: 15%;
+      position: absolute;
+      text-transform: uppercase;
+      font-size: 30px;
+    }
+
+    .earthquakeTitle {
+      color: black;
+      top: 8%;
+      left: 43%;
+      position: absolute;
+      text-transform: uppercase;
+      font-size: 30px;
+    }
+
+    select {
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      /* width: 100%; */
+      font-family: inherit;
+      font-size: inherit;
+      cursor: inherit;
+      /* z-index: 1; */
+      transition: 440ms;
+      outline: none;
+    }
+
+    .select {
+      grid-template-areas: "select";
+      align-items: center;
+      position: relative;
+      min-width: 15ch;
+      /* max-width: 30ch; */
+      border: 3px solid #2196f3;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: 440ms;
+      line-height: 0.458;
+      background-color: #fff;
+    }
+
+    option {
+      white-space: normal;
+      outline-color: var(--select-focus);
+    }
+
+    .oshaHeading {
+      color: black;
+      top: 8%;
+      right: 15.5%;
+      position: absolute;
+      text-transform: uppercase;
+      font-size: 30px;
+    }
+  </style>
 </head>
 
 <body style="margin-top: 50px;" align="center" class="allelements">
-    <!-- <div>
+  <!-- <div>
         <h1>Recall</h1>
         <form action='/set' method="post">
             Recall Title : <input type="text" name="titleRecall" placeholder="title"><br /><br />
@@ -174,117 +236,163 @@
             <input type='submit' /></br></br>
         </form>
     </div> -->
-    <div>
-        <div class="body-image"></div>
-        <div class="box"></div>
-        <div class="profile-text">
-            <h4>CPSC Recall</h4>
-        </div>
-        <div class="input-fields">
-            <form action='/set' method="post">
-                <label class="titleRecall">Recall Title : </label>
-                <input type="text" name="titleRecall" placeholder="Ex : Child" id="username" required>
-                <label class="titelDesc">Recall Description : </label>
-                <input type="text" placeholder="Ex : toys" name="descTitle" id="password" />
-                <input type='submit' value="Search" /></br></br>
-            </form>
-        </div>
+  <div>
+    <div class="body-image"></div>
+    <div class="box"></div>
+    <div class="profile-text">
+      <h4 class="cpscRecall">CPSC Recall</h4>
     </div>
-    <div>
-        <div class="box2"></div>
-        <h4 class="oshaHeading">OSHA ESTABLISHMENT</h4>
-        <div class="input-fields">
-            <form action='/states' method="post">
-                <div class="inputOsha">
-                    <label class="titleEstablishment">Establishment :</label>
-                    <input type="text" name="establishment_name" placeholder="Apple" required />
-                    <label class="stateYear">Input a State Name :</label><br /><br />
-                    <div class="select">
-                        <select name="states_name" id="standard-select" required>
-                            <option value="none" selected disabled hidden>Select a state</option>
-                            <option value="AA">AA</option>
-                            <option value="AE">AE</option>
-                            <option value="AK">AK</option>
-                            <option value="AL">AL</option>
-                            <option value="AR">AR</option>
-                            <option value="AS">AS</option>
-                            <option value="AZ">AZ</option>
-                            <option value="CA">CA</option>
-                            <option value="CO">CO</option>
-                            <option value="CT">CT</option>
-                            <option value="DC">DC</option>
-                            <option value="DE">DE</option>
-                            <option value="FL">FL</option>
-                            <option value="GA">GA</option>
-                            <!-- <option value="GU">GU</option> -->
-                            <option value="HI">HI</option>
-                            <option value="IA">IA</option>
-                            <option value="ID">ID</option>
-                            <option value="IL">IL</option>
-                            <option value="IN">IN</option>
-                            <option value="KS">KS</option>
-                            <option value="KY">KY</option>
-                            <option value="LA">LA</option>
-                            <option value="MA">MA</option>
-                            <option value="MD">MD</option>
-                            <option value="ME">ME</option>
-                            <option value="MI">MI</option>
-                            <option value="MN">MN</option>
-                            <option value="MO">MO</option>
-                            <option value="MS">MS</option>
-                            <option value="MT">MT</option>
-                            <option value="NC">NC</option>
-                            <option value="ND">ND</option>
-                            <option value="NE">NE</option>
-                            <option value="NH">NH</option>
-                            <option value="NJ">NJ</option>
-                            <option value="NM">NM</option>
-                            <option value="NV">NV</option>
-                            <option value="NY">NY</option>
-                            <option value="OH">OH</option>
-                            <option value="OK">OK</option>
-                            <option value="OR">OR</option>
-                            <option value="PA">PA</option>
-                            <option value="PR">PR</option>
-                            <option value="PW">PW</option>
-                            <option value="RI">RI</option>
-                            <option value="SC">SC</option>
-                            <option value="SD">SD</option>
-                            <option value="TN">TN</option>
-                            <option value="TX">TX</option>
-                            <option value="UT">UT</option>
-                            <option value="VA">VA</option>
-                            <option value="VI">VI</option>
-                            <option value="VT">VT</option>
-                            <option value="WA">WA</option>
-                            <option value="WI">WI</option>
-                            <option value="WV">WV</option>
-                            <option value="WY">WY</option>
-                        </select> <br /><br />
-                        <span class="focus"></span>
-                    </div><br />
+    <div class="input-fields">
+      <form action='/set' method="post">
+        <label class="titleRecall">Recall Title : </label>
+        <input type="text" name="titleRecall" placeholder="Ex : Child" id="username" required>
+        <label class="titelDesc">Recall Description : </label>
+        <input type="text" placeholder="Ex : toys" name="descTitle" id="password" />
+        <input type='submit' value="Search" /></br></br>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div class="box3"></div>
+    <div class="profile-text">
+      <h4 class="earthquakeTitle">Hazard Data</h4>
+      <div class="input-fields">
+        <div class="inputEdata">
+          <p>Select the hazard below</p>
+          <div class="select">
+            <select id="test" name="form_select" onchange="showDiv(this)">
+              <option value="0">Water Hazards</option>
+              <option value="1">Floods</option>
+              <option value="2">Earthquake</option>
+            </select>
+          </div>
+          <div id="watersourceDiv" style="display:block;">
+            <form action='/watersource' method="post">
+              <br /><br />
+              <label class="titleRecall" style="margin-left: -65%;">Region</label>
+              <input type="text" name="regionName" placeholder="Ex : KS or 01 to 21" id="password" />
+              <input type='submit' value="Search" /></br></br>
+            </form>
+          </div>
+          <div id="floodDiv" style="display:none;">
+            <form action='/floodsource' method="post">
+              <br /><br />
+              <label class="titleRecall" style="margin-left: -65%;">Region</label>
+              <input type="text" name="floodRegionName" placeholder="Ex : KS or 01 to 21" id="password" />
+              <input type='submit' value="Search" /></br></br>
+            </form>
+          </div>
+          <div id="earthquakeDiv" style="display:none;">
+            <br />
+            <form action='/earth' method="post">
+              <!-- <h3><u>For Magnitude >=2</u></h3> -->
+              <label class="titleRecall" style="margin-left: -65%;">Start Date : </label>
+              <input type="date" name="startDate" id="username" required>
+              <label class="titelDesc" style="margin-left: -65%;">End date : </label>
+              <input type="date" name="endDate" id="password" required />
+              <input type="text" name="place" placeholder="Ex : Japan " id="password" />
+              <input type='submit' value="Search" /></br></br>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="box2"></div>
+    <h4 class="oshaHeading">OSHA ESTABLISHMENT</h4>
+    <div class="input-fields">
+      <form action='/states' method="post">
+        <div class="inputOsha">
+          <label class="titleEstablishment">Establishment :</label>
+          <input type="text" name="establishment_name" placeholder="Apple" required />
+          <label class="stateYear">Input a State Name :</label><br /><br />
+          <div class="select">
+            <select name="states_name" id="standard-select" required>
+              <option value="none" selected disabled hidden>Select a state</option>
+              <option value="AA">AA</option>
+              <option value="AE">AE</option>
+              <option value="AK">AK</option>
+              <option value="AL">AL</option>
+              <option value="AR">AR</option>
+              <option value="AS">AS</option>
+              <option value="AZ">AZ</option>
+              <option value="CA">CA</option>
+              <option value="CO">CO</option>
+              <option value="CT">CT</option>
+              <option value="DC">DC</option>
+              <option value="DE">DE</option>
+              <option value="FL">FL</option>
+              <option value="GA">GA</option>
+              <!-- <option value="GU">GU</option> -->
+              <option value="HI">HI</option>
+              <option value="IA">IA</option>
+              <option value="ID">ID</option>
+              <option value="IL">IL</option>
+              <option value="IN">IN</option>
+              <option value="KS">KS</option>
+              <option value="KY">KY</option>
+              <option value="LA">LA</option>
+              <option value="MA">MA</option>
+              <option value="MD">MD</option>
+              <option value="ME">ME</option>
+              <option value="MI">MI</option>
+              <option value="MN">MN</option>
+              <option value="MO">MO</option>
+              <option value="MS">MS</option>
+              <option value="MT">MT</option>
+              <option value="NC">NC</option>
+              <option value="ND">ND</option>
+              <option value="NE">NE</option>
+              <option value="NH">NH</option>
+              <option value="NJ">NJ</option>
+              <option value="NM">NM</option>
+              <option value="NV">NV</option>
+              <option value="NY">NY</option>
+              <option value="OH">OH</option>
+              <option value="OK">OK</option>
+              <option value="OR">OR</option>
+              <option value="PA">PA</option>
+              <option value="PR">PR</option>
+              <option value="PW">PW</option>
+              <option value="RI">RI</option>
+              <option value="SC">SC</option>
+              <option value="SD">SD</option>
+              <option value="TN">TN</option>
+              <option value="TX">TX</option>
+              <option value="UT">UT</option>
+              <option value="VA">VA</option>
+              <option value="VI">VI</option>
+              <option value="VT">VT</option>
+              <option value="WA">WA</option>
+              <option value="WI">WI</option>
+              <option value="WV">WV</option>
+              <option value="WY">WY</option>
+            </select> <br /><br />
+            <span class="focus"></span>
+          </div><br />
 
-                    <!-- <input type="text" name="states_name" placeholder="AL" /><br /><br /> -->
-                    <label class="titleEstablishment">Year of Filing :</label><br /><br />
-                    <div class="select">
-                        <select name="year_filing_for" id="standard-select" required>
-                            <option value="none" selected disabled hidden>Select a year</option>
-                            <option value="19962001">1996 to 2001</option>
-                            <option value="20022011">2002 to 2011</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                        </select> <br /><br />
-                        <span class="focus"></span>
-                    </div><br />
-                    <input type="submit" name="search" value="Search" />
-                </div>
-            </form>
+          <!-- <input type="text" name="states_name" placeholder="AL" /><br /><br /> -->
+          <label class="titleEstablishment">Year of Filing :</label><br /><br />
+          <div class="select">
+            <select name="year_filing_for" id="standard-select" required>
+              <option value="none" selected disabled hidden>Select a year</option>
+              <option value="19962001">1996 to 2001</option>
+              <option value="20022011">2002 to 2011</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+            </select> <br /><br />
+            <span class="focus"></span>
+          </div><br />
+          <input type="submit" name="search" value="Search" />
         </div>
+      </form>
     </div>
+  </div>
 </body>
 </body>
 
