@@ -135,6 +135,16 @@ if(helper.isEmpty(data)){
   res.sendFile("./noData.html", {
     root: __dirname,
 })} else{
+  // setTimeout(()=>{
+  //   const newData = data.features
+  //     res.render(req.body.place ? 'EarthquakePlace' : 'Earthquake', {
+  //     path: newData,
+  //     helper:helper,
+  //     path1 : pathNew
+  //   });
+  //   console.log(url)
+  // },6000)
+  if(req.body.place){
   setTimeout(()=>{
     const newData = data.features
       res.render(req.body.place ? 'EarthquakePlace' : 'Earthquake', {
@@ -144,27 +154,17 @@ if(helper.isEmpty(data)){
     });
     console.log(url)
   },6000)
-//   if(req.body.place){
-//   setTimeout(()=>{
-//     const newData = data.features
-//       res.render(req.body.place ? 'EarthquakePlace' : 'Earthquake', {
-//       path: newData,
-//       helper:helper,
-//       path1 : pathNew
-//     });
-//     console.log(url)
-//   },6000)
-// } else {
-//   setTimeout(()=>{
-//     const newData = data.features
-//     res.render("Earthquake", {
-//       path: newData,
-//       helper:helper,
-//       path1 : pathNew
-//     });
-//     console.log(url)
-//   },6000)
-// }
+} else {
+  setTimeout(()=>{
+    const newData = data.features
+    res.render("Earthquake", {
+      path: newData,
+      helper:helper,
+      path1 : pathNew
+    });
+    console.log(url)
+  },6000)
+}
 }
 })
 
