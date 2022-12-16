@@ -17,9 +17,7 @@
     td {
       border: 1px solid black;
       border-collapse: collapse;
-      /* height: 20px; */
       font-size: 20px;
-      /* width: 50%; */
       table-layout: fixed;
     }
 
@@ -30,8 +28,6 @@
   </style>
   <div>
     <form action='/set' method="post">
-      <!-- Recall Title : <input type="text" name="titleRecall" placeholder="title"><br /><br /> -->
-      <!-- Recall Desc : <input type="text" name="descTitle" placeholder="description"><br /><br /> -->
       <%path1.forEach(function(recallInfo){%>
         Recall Title : <input type="text" name="titleRecall" placeholder="title"
           value='<%=recallInfo.title%>'><br /><br />
