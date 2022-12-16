@@ -168,6 +168,19 @@ if(helper.isEmpty(data)){
 }
 })
 
+app.get('/watersource' , (req,res)=>{
+  let url = `https://waterwatch.usgs.gov/webservices/realtime?region=ks&format=json`
+ fetch(url)
+  .then(res => res.json())
+  .then(json => {
+    data = json
+})
+setTimeout(()=>{
+  res.json(data)
+},6000)
+console.log(url)
+})
+
 app.post('/watersource' , (req,res)=>{
   let regionPlace = req.body.regionName
   let url = `https://waterwatch.usgs.gov/webservices/realtime?region=${regionPlace}&format=json`
@@ -181,6 +194,21 @@ setTimeout(()=>{
 },6000)
 console.log(url)
 })
+
+
+app.get('/floodsource' , (req,res)=>{
+  let url = ` https://waterwatch.usgs.gov/webservices/flood?region=10&format=json`
+ fetch(url)
+  .then(res => res.json())
+  .then(json => {
+    data = json
+})
+setTimeout(()=>{
+  res.json(data)
+},6000)
+console.log(url)
+})
+
 
 app.post('/floodsource' , (req,res)=>{
   let floodPlace = req.body.floodRegionName
