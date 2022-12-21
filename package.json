@@ -4,7 +4,8 @@
   "description": "Recall data from CPSC Govt Recalls ",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "test": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",

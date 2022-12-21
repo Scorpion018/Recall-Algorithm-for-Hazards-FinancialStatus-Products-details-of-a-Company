@@ -1,6 +1,6 @@
 var express = require('express');
 var ejs = require('ejs');
-var port = 8080;
+var port = 8000;
 var app = express();
 const Pool = require('pg').Pool
 var cors = require('cors')
@@ -26,12 +26,6 @@ pool.connect((err) => {
 let data = ''
 let recallTitle = ''
 let recallDescription = ''
-let arrayName =[
-  {
-    title : recallTitle,
-    desc : recallDescription
-  }
-]
 
 app.get("/", (req, res) => {
   res.sendFile("./index.html", {
@@ -44,11 +38,9 @@ app.post('/set' , (req,res)=>{
   let url = `https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=${recallTitle}`
   if(req.body.titleRecall){
     recallTitle = req.body.titleRecall
-    arrayName.title = req.body.titleRecall
   }
   if(req.body.descTitle){
     recallDescription = req.body.descTitle
-    arrayName.desc = req.body.descTitle
     url = `https://www.saferproducts.gov/RestWebServices/Recall?format=json&RecallTitle=${recallTitle}&RecallDescription=${recallDescription}`
   }
  fetch(url)
@@ -65,7 +57,6 @@ setTimeout(()=>{
     }]
   });
 },6000)
-// res.json(data)
 })
 
 app.post('/states', (req, res) => {
